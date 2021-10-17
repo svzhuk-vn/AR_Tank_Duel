@@ -11,7 +11,7 @@ public class SpawnPlayers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.Instantiate(player.name, new Vector3 (0, 3, 0), Quaternion.identity);
+        PhotonNetwork.Instantiate(player.name, new Vector3 (Random.Range(-45,45), 3, Random.Range(-45, 45)), Quaternion.identity);
     }
 
     // Update is called once per frame

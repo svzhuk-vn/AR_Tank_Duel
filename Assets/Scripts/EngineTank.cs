@@ -18,7 +18,6 @@ public class EngineTank : MonoBehaviour
         buttonFire.onClick.AddListener(Fire);
     }
 
-
     public void Fire()
     {
         TankTurret = GameObject.Find("TurretExit");
@@ -27,7 +26,7 @@ public class EngineTank : MonoBehaviour
         GameObject Shell = PhotonNetwork.Instantiate("Shell", SpawnPoint, SpawnRoot) as GameObject;
         Rigidbody Shoot = Shell.GetComponent<Rigidbody>();
         Shoot.AddForce(Shell.transform.forward * firePower, ForceMode.Impulse);
-        Destroy(Shell, 5);  
-        
+        Destroy(Shell, 5);
+        //PhotonNetwork.Destroy(Shell); // TODO!
     }
 }
