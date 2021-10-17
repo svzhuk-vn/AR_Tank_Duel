@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class EngineTank : MonoBehaviour
 {
@@ -15,18 +16,18 @@ public class EngineTank : MonoBehaviour
     {
         buttonFire = GetComponent<Button>();
         buttonFire.onClick.AddListener(Fire);
-
-
     }
+
+
     public void Fire()
     {
         TankTurret = GameObject.Find("TurretExit");
         Vector3 SpawnPoint = TankTurret.transform.position;
         Quaternion SpawnRoot = TankTurret.transform.rotation;
-        GameObject Shell = Instantiate(Bullet, SpawnPoint, SpawnRoot) as GameObject;
+        GameObject Shell = PhotonNetwork.Instantiate("Shell", SpawnPoint, SpawnRoot) as GameObject;
         Rigidbody Shoot = Shell.GetComponent<Rigidbody>();
         Shoot.AddForce(Shell.transform.forward * firePower, ForceMode.Impulse);
-        Destroy(Shell, 5);
-
+        Destroy(Shell, 5);  
+        
     }
 }

@@ -20,7 +20,7 @@ public class Mover : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (view.IsMine)
+        if (view.IsMine) //управление только локальным(!) игроком  
         {
             rigidbody.velocity = new Vector3(joystick.Horizontal * moveSpeed, rigidbody.velocity.y, joystick.Vertical * moveSpeed);
             if (joystick.Horizontal != 0 || joystick.Vertical != 0) transform.rotation = Quaternion.LookRotation(rigidbody.velocity);
