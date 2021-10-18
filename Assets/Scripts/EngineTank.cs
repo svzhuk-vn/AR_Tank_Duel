@@ -23,10 +23,15 @@ public class EngineTank : MonoBehaviour
         TankTurret = GameObject.Find("TurretExit");
         Vector3 SpawnPoint = TankTurret.transform.position;
         Quaternion SpawnRoot = TankTurret.transform.rotation;
-        GameObject Shell = PhotonNetwork.Instantiate("Shell", SpawnPoint, SpawnRoot) as GameObject;
+        GameObject Shell = PhotonNetwork.Instantiate("Shell", SpawnPoint, SpawnRoot) as GameObject; //PhotonNetwork.Instantiate("Shell") - пули видны для всех
         Rigidbody Shoot = Shell.GetComponent<Rigidbody>();
         Shoot.AddForce(Shell.transform.forward * firePower, ForceMode.Impulse);
-        Destroy(Shell, 5);
-        //PhotonNetwork.Destroy(Shell); // TODO!
+        StartCoroutine(WaitAndDestroy(5,Shell)); // корутина удаления пуль после 5 секунд. PhotonNetwork.Destroy(Shell) удаляет пули инстантно
+    }
+
+    IEnumerator WaitAndDestroy(float time, GameObject bullet)
+    {
+        yield return new WaitForSeconds(time);
+        PhotonNetwork.Destroy(bullet);
     }
 }

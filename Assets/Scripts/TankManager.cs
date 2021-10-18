@@ -26,7 +26,7 @@ public class TankManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PV.IsMine) hp.text = "HP: " + CurrentHP.ToString() + " / " + MaxHP.ToString();
+        if (PV.IsMine) hp.text = "HP: " + CurrentHP.ToString() + " / " + MaxHP.ToString(); //отображение хп для каждого игрока отдельно 
         if (CurrentHP == 0) PhotonNetwork.Destroy(this.gameObject);
     }
 
