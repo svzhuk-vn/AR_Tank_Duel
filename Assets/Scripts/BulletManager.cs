@@ -24,12 +24,11 @@ public class BulletManager : MonoBehaviour
             CheckTank.CurrentHP -= BulletDmg;
             Debug.Log(CheckTank.CurrentHP.ToString());
             Destroy(this.gameObject);
+            //PhotonNetwork.Destroy(this.gameObject);
         }
-
-
     }
 
-   
+
     // Update is called once per frame
     void Update()
     {

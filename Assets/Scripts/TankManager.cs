@@ -11,6 +11,7 @@ public class TankManager : MonoBehaviour
     public float CurrentHP = 100;
     public Text hp;
     public GameObject dieText;
+    public GameObject restartButton;
     PhotonView PV;
 
 
@@ -19,18 +20,21 @@ public class TankManager : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         hp = GameObject.Find("HPText").GetComponent<Text>();
-        /*dieText = GameObject.Find("DieScreen"); //TODO
-        dieText.gameObject.SetActive(false);*/ 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PV.IsMine) hp.text = "HP: " + CurrentHP.ToString() + " / " + MaxHP.ToString(); //отображение хп для каждого игрока отдельно 
-        if (CurrentHP == 0) PhotonNetwork.Destroy(this.gameObject);
+        if (PV.IsMine) hp.text = "HP: " + CurrentHP.ToString() + " / " + MaxHP.ToString(); // FIX : отображение хп для каждого игрока отдельно 
+        if (PV.IsMine && CurrentHP == 0) // FIX2 : удаление проигравшего с экрана обоих игроков
+        {
+            Instantiate(dieText, GameObject.Find("Canvas").transform); // экран смерти
+            Instantiate(restartButton, GameObject.Find("Canvas").transform); // кнопка перезагрузки
+            PhotonNetwork.Destroy(this.gameObject); // FIX : удаление проигравшего с экрана обоих игроков
+            }
+        }
+
+
+
+
     }
-
-
-
-
-}
