@@ -6,7 +6,6 @@ using Photon.Pun;
 public class BulletManager : MonoBehaviour
 {
     public float BulletDmg = 10;
-    PhotonView view;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +13,6 @@ public class BulletManager : MonoBehaviour
         
     }
 
-    [PunRPC]
     private void OnCollisionEnter(Collision collision)
     {
         GameObject col = collision.gameObject;
@@ -23,8 +21,8 @@ public class BulletManager : MonoBehaviour
         {
             CheckTank.CurrentHP -= BulletDmg;
             Debug.Log(CheckTank.CurrentHP.ToString());
-            Destroy(this.gameObject);
-            //PhotonNetwork.Destroy(this.gameObject);
+            //PhotonNetwork.Destroy(this.gameObject); TODO
+            
         }
     }
 
@@ -34,4 +32,5 @@ public class BulletManager : MonoBehaviour
     {
         
     }
+
 }

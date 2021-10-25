@@ -10,20 +10,25 @@ public class Restart : MonoBehaviour
     public GameObject player;
     GameObject dieText;
     GameObject restartButton;
+    private ARManager ProgramManagerScript;
 
     void Start()
     {
-        
+        ProgramManagerScript = FindObjectOfType<ARManager>();
     }
 
     public void RestartScene()
     {
-        //PhotonNetwork.LoadLevel(2);
-        PhotonNetwork.Instantiate(player.name, new Vector3(Random.Range(-45, 45), 3, Random.Range(-45, 45)), Quaternion.identity);
+        //PhotonNetwork.LoadLevel(2); TODO
         dieText = GameObject.Find("DieScreen(Clone)");
         restartButton = this.gameObject;
         Destroy(dieText);
         Destroy(restartButton);
+    }
+
+    public void Spawn()
+    {
+        ProgramManagerScript.ChooseObject = true;
     }
 
     // Update is called once per frame

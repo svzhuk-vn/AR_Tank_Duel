@@ -7,7 +7,7 @@ public class Mover : MonoBehaviour
 {
     private Joystick joystick;
     private Rigidbody rigidbody;
-    private float moveSpeed = 10;
+    private float moveSpeed;
     PhotonView view;
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,7 @@ public class Mover : MonoBehaviour
         joystick = FindObjectOfType<Joystick>();
         rigidbody = GetComponent<Rigidbody>();
         view = GetComponent<PhotonView>();
+        moveSpeed = 1;
     }
 
     // Update is called once per frame
