@@ -1,4 +1,7 @@
 # AR_Tank_Duel
+<img src="https://i.imgur.com/qM48sN8.gif" width="320">  
+
+
 The project represents the work of a multiplayer service Photon:  
 https://assetstore.unity.com/packages/tools/network/pun-2-free-119922  
 And AR (ARCore)  
