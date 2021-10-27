@@ -20,6 +20,7 @@ public class Restart : MonoBehaviour
     public void RestartScene()
     {
         //PhotonNetwork.LoadLevel(2); TODO
+        Spawn();
         dieText = GameObject.Find("DieScreen(Clone)");
         restartButton = this.gameObject;
         Destroy(dieText);
