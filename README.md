@@ -6,7 +6,7 @@ Two-player AR multiplayer game.
 
 # Packages
 * [Photon](https://assetstore.unity.com/packages/tools/network/pun-2-free-119922)
-* [AR (ARCore)](https://developers.google.com/ar/devices)
+* [AR (ARCore)](https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.2/manual/)
 # Assets
 * [Joystick-pack](https://assetstore.unity.com/packages/tools/input-management/joystick-pack-107631)
 
